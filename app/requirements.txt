@@ -1,0 +1,9 @@
+flask
+pandas
+gunicorn
+xgboost
+numpy
+datetime
+sklearn
+matplotlib
+seaborn
