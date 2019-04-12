@@ -45,7 +45,7 @@ def index():
 def home():
     return flask.render_template('index.html')
 
-@app.route('/predict', methods=['GET'])
+@app.route('/predict', methods=['POST'])
 def make_prediction():
     model = joblib.load('model.pkl')
     data=joblib.load('traindatapkl.pkl')
@@ -107,7 +107,7 @@ def make_prediction():
         positive=0
     return render_template('index.html', label=label,label1=percentinc,label2=positive)
 
-@app.route('/plot',methods=['GET'])
+@app.route('/plot',methods=['POST','GET'])
 def build_plot():
     #a=str(day)
     meansales,meansales16=meansales_of_past_years(store,month)
