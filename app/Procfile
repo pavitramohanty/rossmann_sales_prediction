@@ -1,1 +1,1 @@
-web: gunicorn routes:xgboost_routes
+web: gunicorn xgboost_routes:app
