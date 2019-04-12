@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% block content %}
+<!DOCTYPE html>	
+<section class="content-section">
+						
+				
+    			<form name="predictForm" method="POST" action="/predict" onsubmit="return validateForm()">
+    				 <div class="form-group">
+    				 		<div class="row">
+						<div class="col-lg-6 mx-auto">		
+    				 	 <html>
+						<br>
+    				 		<h2>Store Wise sales forecast is:</h2>						
+    				 		<h1>
+							  {% if label %} {{ label }} {% endif %}
+							</h1>							
+							  {% if label2==1 %} 
+							  <h2>Percent change:{{label1}}<img src="/static/img/up.png" height="30" width="30"></h2>							   
+							  {% elif label2==0 %}
+							  <h2>Percent Change:{{label1}}<img src="/static/img/down.png" height="30" width="30"></h2>
+							  {% else %}							  
+							  {% endif %}						  
+								
+							  <button class="btn btn-lg btn-primary" type="submit">	Predict </button>		
+							  <button class="btn btn-lg btn-primary" type="submit" formaction="/plot"> Plot </button>		
+							
+						</div>
+						<div class="col-lg-6">
+              <div class="row">
+							<div class="col-lg-6">
+							<br>
+		<label for="month">Select the date:</label><br>
+
+				
+		<input type="date" id="month" name="Month" value="2019-04-15"
+				 class="btn btn-secondary btn-lg dropdown-toggle"aria-haspopup="true"
+					min="2019-03-01" max="2022-12-31">
+		<br>		
+							<br>
+							<label for="promo">Promotional offer 1</label>
+							<br>
+
+						    <select name="Promo" class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="promo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						      <option>0</option>
+						      <option>1</option>
+						    </select>
+		
+						    <p><small>store running a Promo = 1</small></p>
+							<p><small>store not running a Promo = 0</small></p><br>
+							<label for="state_holliday">State Holiday</label><br>
+
+
+						    <select name="StateH" class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="state_holliday" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						      <option>1</option>
+						      <option>2</option>
+						      <option>3</option>
+							  <option>4</option>
+						    </select>
+                <p><small>1 = None | 2 = public holiday <br> 3 = Easter holiday | 4 = Christmas holiday</small></p><br>
+				<label for="assortment">Assortment Type</label><br>
+                <select name="Assortment" class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="assortment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						      <option>1</option>
+						      <option>2</option>
+						      <option>3</option>
+						    </select>
+                <p><small>Basic = 1 | Extra = 2 | Extended = 3</small></p>
+						    <div class="input-group">
+								  <div class="input-group-prepend">
+								    <span class="input-group-text">Store #</span>
+								  </div>
+								  <input type="text" name="store" value="1" class="form-control" aria-label="With textarea">
+								</div>
+                <p><small>Please enter integer between 1 - 1115</small></p>
+								</div>
+                <div class="col-lg-6 mx-auto">
+                  <br>
+				<label for="school_holliday">Promotional offer 2</label><br>
+                  <select name="SchoolH" class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="school_holliday" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  						      <option>0</option>
+  						      <option>1</option>
+  						    </select>
+                  <p><small>Promotional offer 2 not active = 0 <br> Promotional offer 2 active = 1</small></p>
+				<label for="store_type">Store Type</label><br>
+                  <select name="StoreType" class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="store_type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  						      <option>1</option>
+  						      <option>2</option>
+  						      <option>3</option>
+                    <option>4</option>
+  						    </select>
+                  <p><small>Grocery = 1 | Shopping = 2 <br>Utilities = 3 | Health = 4</small></p>
+                </div>
+						</div>
+          </div>
+  					</div>
+    			</div>
+				
+    		</form>
+			
+			
+			
+    	</div>
+    </div>
+</section>
+{% endblock %}
