@@ -117,7 +117,7 @@ def build_plot():
     predictedvalue1= np.nan_to_num(predictedvalue)    
     img = io.BytesIO()
     data=pd.DataFrame({
-            'y':[int(meansales16),int(meansales),int(predictedvalue1)],
+            'y':[int(meansales16),int(meansales),float(predictedvalue1)],
             'x':[str(month)+'/2016',str(month)+'/2017',str(month)+'/2018']})
     #data=data.sort_values(by=['x'])
     plt.figure(figsize=(12,8))
