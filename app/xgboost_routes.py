@@ -10,6 +10,7 @@ import io
 import base64
 import seaborn as sns
 import urllib
+import time 
 sns.set_style("dark")
 sns.despine()
 
@@ -112,6 +113,7 @@ def make_prediction():
 
 @app.route('/plot',methods=['POST'])
 def build_plot():
+    time.sleep(10)
     meansales,meansales16=meansales_of_past_years(store,month)
     
     predictedvalue1= np.nan_to_num(predictedvalue)    
