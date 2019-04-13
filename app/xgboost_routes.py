@@ -107,7 +107,7 @@ def make_prediction():
         positive=0
     return render_template('index.html', label=label,label1=percentinc,label2=positive)
 
-@app.route('/plot',methods=['POST','GET'])
+@app.route('/plot',methods=['POST'])
 def build_plot():
     #a=str(day)
     meansales,meansales16=meansales_of_past_years(store,month)
