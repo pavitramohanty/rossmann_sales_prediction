@@ -46,7 +46,7 @@ def home():
     return flask.render_template('index.html')
 global day
 global month
-global store
+global store1
 global predictedvalue
 @app.route('/predict', methods=['POST','GET'])
 def make_prediction():
@@ -64,7 +64,7 @@ def make_prediction():
         assortment = int(request.form['Assortment'])
         storeType = int(request.form['StoreType'])
         store = int(request.form['store'])
-        
+        store1=store
         
         # one-hot encode categorical variables
         stateH_encode = onehotCategorical(stateH, 4)
@@ -109,7 +109,7 @@ def make_prediction():
 
 @app.route('/plot',methods=['POST'])
 def build_plot():
-    meansales,meansales16=meansales_of_past_years(store,month)
+    meansales,meansales16=meansales_of_past_years(store1,month)
     img = io.BytesIO()
     data=pd.DataFrame({
             'y':[int(meansales16),int(meansales),float(predictedvalue)],
