@@ -113,8 +113,8 @@ def make_prediction():
 @app.route('/plot',methods=['POST'])
 def build_plot():
     meansales,meansales16=meansales_of_past_years(store,month)
-    if np.isnan(predictedvalue):
-        value = np.nan_to_num(predictedvalue)    
+    
+    predictedvalue= np.nan_to_num(predictedvalue)    
     img = io.BytesIO()
     data=pd.DataFrame({
             'y':[int(meansales16),int(meansales),int(predictedvalue)],
