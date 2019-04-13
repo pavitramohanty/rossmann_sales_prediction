@@ -109,8 +109,9 @@ def make_prediction():
 
 @app.route('/plot',methods=['POST'])
 def build_plot():
-    #a=str(day)
-    meansales,meansales16=meansales_of_past_years(store,month)
+    store1=store
+    month1=month
+    meansales,meansales16=meansales_of_past_years(store1,month1)
     img = io.BytesIO()
     data=pd.DataFrame({
             'y':[int(meansales16),int(meansales),float(predictedvalue)],
