@@ -44,15 +44,18 @@ def index():
 @app.route("/home",methods=['POST','GET'])
 def home():
     return flask.render_template('index.html')
-global day
-global month
-global store
-global predictedvalue
+day=0
+month=0
+store=0
+predictedvalue=0
 @app.route('/predict', methods=['POST','GET'])
 def make_prediction():
     model = joblib.load('model.pkl')
     data=joblib.load('traindatapkl.pkl')
-  
+    global day
+    global month
+    global store
+    global predictedvalue
     if request.method=='POST':
         entered_li = []
         month = request.form['Month']
