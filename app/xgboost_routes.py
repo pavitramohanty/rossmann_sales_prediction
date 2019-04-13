@@ -52,7 +52,7 @@ global predictedvalue
 def make_prediction():
     model = joblib.load('model.pkl')
     data=joblib.load('traindatapkl.pkl')
-   
+  
     if request.method=='POST':
         entered_li = []
         month = request.form['Month']
@@ -109,10 +109,7 @@ def make_prediction():
 
 @app.route('/plot',methods=['POST'])
 def build_plot():
-    
-    month1=month
-    store1=store
-    meansales,meansales16=meansales_of_past_years(store1,month1)
+    meansales,meansales16=meansales_of_past_years(store,month)
     img = io.BytesIO()
     data=pd.DataFrame({
             'y':[int(meansales16),int(meansales),float(predictedvalue)],
