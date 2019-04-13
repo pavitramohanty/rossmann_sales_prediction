@@ -45,7 +45,7 @@ def index():
 def home():
     return flask.render_template('index.html')
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST','GET'])
 def make_prediction():
     model = joblib.load('model.pkl')
     data=joblib.load('traindatapkl.pkl')
