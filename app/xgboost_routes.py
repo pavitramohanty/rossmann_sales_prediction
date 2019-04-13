@@ -109,8 +109,9 @@ def make_prediction():
 
 @app.route('/plot',methods=['POST'])
 def build_plot():
-    store1=store
+    
     month1=month
+    store1=store
     meansales,meansales16=meansales_of_past_years(store1,month1)
     img = io.BytesIO()
     data=pd.DataFrame({
